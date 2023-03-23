@@ -1,0 +1,61 @@
+<section class="container">
+    <div class="login-container">
+      <!-- <div class="circle circle-one"></div> -->
+      <div *ngIf="!loading"class="form-container">
+        <img
+          src="https://github.com/hicodersofficial/glassmorphism-login-form/blob/master/assets/illustration.png?raw=true"
+          alt="illustration"
+          class="illustration"
+        />
+        <h1 class="opacity">Registrarse</h1>
+        <form (ngSubmit)="registrar()" [formGroup]="registrarUsuario">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
+                <label>Correo</label>
+                <span *ngIf="registrarUsuario.get('email')?.hasError('required') && registrarUsuario.get('email')?.touched" class="text-danger errorLabel">
+                    El <strong>correo</strong> es requerido
+                </span>
+                <span *ngIf="registrarUsuario.get('email')?.hasError('email') && registrarUsuario.get('email')?.touched" class="text-danger errorLabel">
+                    El <strong>correo</strong> es invalido
+                </span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                <label>Contraseña</label>
+                <span *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched" class="text-danger errorLabel">
+                    La <strong>contraseña</strong> es requerida
+                </span>
+                <span *ngIf="registrarUsuario.get('password')?.hasError('minlength') && registrarUsuario.get('password')?.touched" class="text-danger errorLabel">
+                    El <strong>contraseña</strong> debe tener 6 caracteres
+                </span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" formControlName="repetirPassword" placeholder="Repetir Password">
+                <label>Repetir Contraseña</label>
+            </div>
+
+            <div class="row">
+                <div class="col mb-3">
+                    <select class="input-style form-select" formControlName="role">
+                        <option disabled selected value>-- Tipo de rol --</option>
+                        <option value="Usuario">Usuario</option>
+                        <option value="Chofer">Chofer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-1">
+                <button class="btn btn-primary btn-lg" [disabled]="registrarUsuario.invalid" type="submit">Aceptar</button>
+            </div>           
+            
+        </form>
+        <div class="register-forget opacity">
+            <a routerLink="/login">Volver</a>
+        </div>
+        <app-spinner *ngIf="loading"></app-spinner>
+      </div>
+      <div class="circle circle-two"></div>
+    </div>
+    <div class="theme-btn-container"></div>
+  </section>
+

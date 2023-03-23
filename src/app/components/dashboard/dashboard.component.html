@@ -1,0 +1,59 @@
+<app-top-nav ></app-top-nav>
+
+<div class="container" *ngIf="authService.userData as user">
+  <div style="width: 50%;">
+    <div class="py-2">
+      <div>
+          <h4 class="pb-4 border-bottom">Balance de cuenta: $ <span>{{user.saldo}}</span></h4>
+      </div>
+      <div class="row py-2">
+          <div class="">
+              <label for="firstname">Agregar dinero a {{user.uid}}</label>
+          </div>
+      </div>
+      <div class="btn-container">
+            <select class="form-select form-select-lg" name="" id="">
+              <option selected>8</option>
+              <option value="">16</option>
+              <option value="">24</option>
+              <option value="">40</option>
+              <option value="">Otro</option>
+            </select>
+          
+      </div>
+      
+
+
+      <div class="py-3 pb-4 border-bottom">
+          <button class="btn btn-primary mr-3">pagar</button>
+          
+      </div>
+      <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+          <div>
+              <b>Desactivar tu cuenta</b>
+              <p>Desactiva tu cuenta </p>
+          </div>
+          <div class="ml-auto">
+              <button class="btn danger">Desactivar</button>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="qr" >
+    <div class="img">
+        <ngx-qrcode-styling #qrcode 
+        [data]="user.uid" [width]="200" [height]="200" [margin]="3"
+            [backgroundOptions]="{ color: '#fff0' }" >
+        </ngx-qrcode-styling>
+        <div>
+            <button (click)="onDownload(qrcode)">Download</button>
+        </div>
+
+    </div>    
+    
+  </div>
+  
+</div>
+
+
+

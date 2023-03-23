@@ -1,0 +1,47 @@
+<!-- <div class="fixed-top bottom-navigation d-flex">
+    <a href="/">
+        <div class="logo">QrTransport</div>
+    </a>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <a *ngFor="let button of buttons" [routerLink]="[button.routing]"
+                class="d-flex justify-content-center align-items-center flex-column">
+                <i [class]="button.iconClass"></i>
+                <p>{{button.name}}</p>
+            </a>
+
+        </ul>
+
+    </nav>
+</div> -->
+<header>
+    <a href="Index.html"><div class="logo">QrTransport</div></a>
+    <div class="hamburger">
+        <div class="line"></div>           
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li>
+                <a routerLink="/profile" >Inicio</a>
+            </li>
+            <li>
+                <a routerLink="/dashboard" class="active">Mi cuenta</a>
+            </li>
+            <li>
+                <a routerLink="/profile">Perfil</a>
+            </li>
+            <li>
+                <a routerLink="/" (click)="logOut()">Cerrar Sesion</a>
+            </li>
+
+        </ul>
+       
+    </nav>
+</header>

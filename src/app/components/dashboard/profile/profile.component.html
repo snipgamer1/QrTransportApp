@@ -1,0 +1,50 @@
+<app-top-nav ></app-top-nav>
+
+<div class="wrapperr bg-white mt-sm-5" *ngIf="authService.userData as user">
+    <div class="py-2">
+        <div>
+            <h4 class="pb-4 border-bottom">Cuenta</h4>
+        </div>
+        <div class="row py-2">
+            <div class="col-md-6">
+                <label for="firstname">Name</label>
+                <input type="text" class="bg-light form-control" placeholder="Steve">
+            </div>
+            
+        </div>
+        <div class="row py-2">
+            <div class="">
+                <label for="email">Email Address</label>
+                <input type="text" class="bg-light form-control" value="{{user.email}}" placeholder="steve_@email.com">
+            </div>
+            
+        </div>
+        <div class="row py-2">
+            <div class="col-md-6 pt-md-0 pt-3">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="bg-light form-control" placeholder="+1 213-548-6015">
+            </div>
+            <div class="col-md-6 pt-md-0 pt-3" id="lang">
+                <label for="language">Tipo De Cuenta</label>
+                <div class="arrow">
+                    <button class="btn btn-primary ">Cambiar A Chofer</button>
+                </div>
+            </div>
+        </div>
+        <div><button class="btn btn-primary  align-items-center">Editar cuenta</button> </div>
+
+        <div class="py-3 pb-4 border-bottom">
+            <button class="btn btn-primary mr-3">Save Changes</button>
+            <button class="btn border button">Cancel</button>
+        </div>
+        <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+            <div>
+                <b>Desactivar tu cuenta</b>
+                <p>Desactiva tu cuenta </p>
+            </div>
+            <div class="ml-auto">
+                <button class="btn danger">Desactivar</button>
+            </div>
+        </div>
+    </div>
+</div>

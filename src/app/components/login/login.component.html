@@ -1,0 +1,42 @@
+<section class="container">
+    <div class="login-container">
+      <!-- <div class="circle circle-one"></div> -->
+      <div *ngIf="!loading"class="form-container">
+        <img
+          src="https://github.com/hicodersofficial/glassmorphism-login-form/blob/master/assets/illustration.png?raw=true"
+          alt="illustration"
+          class="illustration"
+        />
+        <h1 class="opacity">LOGIN</h1>
+        <form (ngSubmit)="login()" [formGroup]="loginUsuario">
+            <div class="form-floating mb-3">
+                <label>Correo</label>
+                <input type="email" formControlName="email" class="form-control" placeholder="name@example.com">
+                <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched" class="text-danger errorLabel">
+                    El <strong>correo</strong> es requerido
+                </span>
+                <span *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched" class="text-danger errorLabel">
+                    El <strong>correo</strong> es invalido
+                </span>
+            </div>
+            <div class="form-floating mb-3">
+                <label>Contraseña</label>
+                <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                <span *ngIf="loginUsuario.get('password')?.hasError('required') && loginUsuario.get('password')?.touched" class="text-danger errorLabel">
+                    La <strong>contraseña</strong> es requerida
+                </span>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="opacity" [disabled]="loginUsuario.invalid" >Ingresar</button>
+            </div>
+        </form>
+        <div class="register-forget opacity">
+            <a routerLink="/registrar-usuario">Registrarse</a>
+            <a routerLink="/recuperar-password">Recuperar Contraseña</a>
+        </div>
+        <app-spinner *ngIf="loading"></app-spinner>
+      </div>
+      <div class="circle circle-two"></div>
+    </div>
+    <div class="theme-btn-container"></div>
+  </section>

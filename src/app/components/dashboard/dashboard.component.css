@@ -1,0 +1,14 @@
+.container{
+	display: flex;
+}
+.btn-container{
+	display: inline-block;
+}
+.qr{
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
+.img{
+	align-self: center;
+}
