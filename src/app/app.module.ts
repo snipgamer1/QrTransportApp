@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -46,7 +48,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     ToastrModule.forRoot(), // ToastrModule added
     NgxQRCodeModule,
     NgxQrcodeStylingModule,
-    FormsModule
+    FormsModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
