@@ -13,6 +13,7 @@ import { Options } from 'ngx-qrcode-styling';
 
 
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,8 +21,11 @@ import { Options } from 'ngx-qrcode-styling';
 })
 export class DashboardComponent implements OnInit {
   dataUser: any;
+
+  userData: any;
   // elementType= NgxQrcodeElementTypes.CANVAS
   // correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH
+  
 
  
 
@@ -37,14 +41,21 @@ export class DashboardComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
-    // this.afAuth.currentUser.then(user => {
-    //   if(user) {
-    //     this.dataUser = user;
-        
-    //   } else {
-    //     this.router.navigate(['/login']);
-    //   }
-    // })
+    // const user = this.afAuth.currentUser;
+  //   this.afAuth.currentUser.then(user => {
+  //     if(user) {
+  //       this.dataUser = user;
+  //     }
+  // }) 
+  
+  // this.authService.user$.subscribe(user => {
+  //   if (user) {
+  //     this.userId = user.uid;
+  //     this.userService.getUserData(this.userId).subscribe(userData => {
+  //       this.userData = userData;
+  //     });
+  //   }
+  // });
   }
   
 
@@ -72,6 +83,12 @@ export class DashboardComponent implements OnInit {
       // TO DO something!
       console.log('download:', res);
     });
+  }
+
+  
+
+  pago(){
+    console.log(this.authService.userData.uid)
   }
   
 

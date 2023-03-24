@@ -21,7 +21,9 @@ export class AuthService {
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone, // NgZone service to remove outside scope warning
-    private db: AngularFireDatabase
+    // private db: AngularFireDatabase
+    private firebase: AngularFireDatabase
+
   ) {
     /* Guardar datos de usuario en almacenamiento local cuando
     iniciado sesión y configuración nula cuando se cierra la sesión */
@@ -62,6 +64,7 @@ export class AuthService {
         up and returns promise */
         // this.SendVerificationMail();
         this.SetUserData(result.user);
+        this.insertRegister(result.user);
       })
   }
 
@@ -142,7 +145,20 @@ export class AuthService {
       this.router.navigate(['sign-in']);
     });
   }
- 
+
+  insertRegister(user: any){
+
+    // this.firebase.object(this.collection).set({...user});
+
+    this.firebase.list('register').push({
+      uid: user.uid,
+      email: user.email,
+      role: 'usuario',
+      saldo: 0,
+    });
+
+  }
+  
 
 
 
