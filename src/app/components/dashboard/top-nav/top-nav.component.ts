@@ -18,16 +18,16 @@ export class TopNavComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    if (this.user.role === 'usuario') {
-      this.buttons.push({ name: 'Inicio', iconClass: 'fas fa-home', routing: '/' });
-      this.buttons.push({ name: 'Cuenta', iconClass: 'far fa-calendar-alt', routing: '/cuenta' });
-      this.buttons.push({ name: 'Unidad', iconClass: 'fas fa-book-open', routing: '/unidad' });
-      this.buttons.push({ name: 'Perfil', iconClass: 'fas fa-user-circle', routing: '/profile' });
-    } else {
-      this.buttons.push({ name: 'Inicio', iconClass: 'fas fa-home', routing: '/' });
-      this.buttons.push({ name: 'Cuenta', iconClass: 'far fa-calendar-alt', routing: '/cuenta' });
-      this.buttons.push({ name: 'Perfil', iconClass: 'fas fa-user-circle', routing: '/profile' });
-    }
+    // if (this.user.role === 'usuario') {
+    //   this.buttons.push({ name: 'Inicio', iconClass: 'fas fa-home', routing: '/' });
+    //   this.buttons.push({ name: 'Cuenta', iconClass: 'far fa-calendar-alt', routing: '/cuenta' });
+    //   this.buttons.push({ name: 'Unidad', iconClass: 'fas fa-book-open', routing: '/unidad' });
+    //   this.buttons.push({ name: 'Perfil', iconClass: 'fas fa-user-circle', routing: '/profile' });
+    // } else {
+    //   this.buttons.push({ name: 'Inicio', iconClass: 'fas fa-home', routing: '/' });
+    //   this.buttons.push({ name: 'Cuenta', iconClass: 'far fa-calendar-alt', routing: '/cuenta' });
+    //   this.buttons.push({ name: 'Perfil', iconClass: 'fas fa-user-circle', routing: '/profile' });
+    // }
   }
 
   logOut() {

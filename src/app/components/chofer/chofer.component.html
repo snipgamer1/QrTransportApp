@@ -1,0 +1,104 @@
+<header>
+    <a href="Index.html"><div class="logo">QrTransport</div></a>
+    <div class="hamburger">
+        <div class="line"></div>           
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li>
+                <a routerLink="/profile" >Inicio</a>
+            </li>
+            <li>
+                <a routerLink="/dashboard" class="active">Mi cuenta</a>
+            </li>
+            <li>
+                <a routerLink="/profile">Perfil</a>
+            </li>
+            <li>
+                <a routerLink="/" (click)="logOut()">Cerrar Sesion</a>
+            </li>
+
+        </ul>
+       
+    </nav>
+</header>
+
+<div class="container" *ngIf="authService.userData as user">
+  <div style="width: 50%;">
+    <div class="py-2">
+      <div>
+          <h4 class="pb-4 border-bottom">Balance de cuenta: $ <span>{{user.saldo}}</span></h4>
+      </div>
+      <div class="row py-2">
+          <div class="">
+              <label for="firstname"ng-if>Agregar dinero a  {{user.uid}}</label>
+          </div>
+      </div>
+      <div class="btn-container" >
+            <form >
+                <select class="form-select form-select-lg">
+                    <option selected value="8">8</option>
+                    <option value="16">16</option>
+                    <option value="24">24</option>
+                    <option value="40">40</option>
+                    <option value="">Otro</option>
+                  </select>
+            </form>
+
+            <div class="py-3 pb-4 border-bottom">
+                <button class="btn btn-primary mr-3" >pagar</button>
+                
+            </div>
+      </div>
+      
+
+
+      
+      <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+          <div>
+              <b>Desactivar tu cuenta</b>
+              <p>Desactiva tu cuenta </p>
+          </div>
+          <div class="ml-auto">
+              <button class="btn danger">Desactivar </button>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="qr" >
+    <div class="img">
+        
+        <div>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Column 1</th>
+                            <th scope="col">Column 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td scope="row">R1C1</td>
+                            <td>R1C2</td>
+                        </tr>
+                        <tr class="">
+                            <td scope="row">Item</td>
+                            <td>Item</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+    </div>    
+    
+  </div>
+  
+</div>
+
+
+

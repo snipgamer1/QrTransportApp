@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Modulos
@@ -8,6 +8,7 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 
 
 // Componentes
@@ -25,6 +26,8 @@ import { ProfileComponent } from './components/dashboard/profile/profile.compone
 //import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { RegistrarChoferComponent } from './components/dashboard/registrar-chofer/registrar-chofer.component';
+import { ChoferComponent } from './components/chofer/chofer.component';
 
 
 @NgModule({
@@ -37,7 +40,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     RecuperarPasswordComponent,
     SpinnerComponent,
     TopNavComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChoferComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     AngularFireDatabaseModule
   ],
   providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

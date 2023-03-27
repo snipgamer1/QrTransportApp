@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { NgModel } from '@angular/forms';
+import { FormBuilder, FormGroup, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   NgxQrcodeStylingComponent,
@@ -8,7 +8,7 @@ import {
 } from 'ngx-qrcode-styling';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from "../../services/auth.service";
-import { Options } from 'ngx-qrcode-styling';
+
 
 
 
@@ -23,11 +23,13 @@ export class DashboardComponent implements OnInit {
   dataUser: any;
 
   userData: any;
+  userId: any;
   // elementType= NgxQrcodeElementTypes.CANVAS
   // correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH
-  
+  // pagos: FormGroup;
+  userRole: any; 
+  isAdmin: any;
 
- 
 
 
   
@@ -37,16 +39,27 @@ export class DashboardComponent implements OnInit {
       private toastr: ToastrService,
       private auth: AuthService,
       public authService: AuthService,
-      private testDI: NgxQrcodeStylingService
-      ) { }
+      private testDI: NgxQrcodeStylingService,
+      private fb: FormBuilder,
+
+      ) { 
+
+        // this.pagos = this.fb.group({
+        //   role: [''],
+        // });
+         this.pago();
+      }
+  
 
   ngOnInit(): void {
-    // const user = this.afAuth.currentUser;
-  //   this.afAuth.currentUser.then(user => {
-  //     if(user) {
-  //       this.dataUser = user;
-  //     }
-  // }) 
+    // this.getCurrentUser()
+
+    const user = this.afAuth.currentUser;
+    this.afAuth.currentUser.then(user => {
+      if(user) {
+        this.dataUser = user;
+      }
+  }) 
   
   // this.authService.user$.subscribe(user => {
   //   if (user) {
@@ -56,6 +69,10 @@ export class DashboardComponent implements OnInit {
   //     });
   //   }
   // });
+  
+
+
+  
   }
   
 
@@ -88,8 +105,32 @@ export class DashboardComponent implements OnInit {
   
 
   pago(){
-    console.log(this.authService.userData.uid)
+    
+    this.afAuth.currentUser.then(user => {
+      if(user) {
+        this.authService.isUserAdmin(this.auth.userData.uid).subscribe(userData => {
+          const userRole = userData.saldo;
+          console.log(`User role: ${userRole}`);
+          // if(this.userRole === 'mILP0hv2pMZkhQtJg2xfxVIOCiE2'){
+          //   this.router.navigate(['/profile']);
+          // }
+        });
+        
+        
+      } 
+    })
   }
+  // getCurrentUser() {
+  //   this.authService.isAuth().subscribe(auth => {
+  //     if (auth) {
+  //       const userUid = auth.uid;
+  //       this.authService.isUserAdmin(userUid).subscribe(userRole => {
+  //         this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
+  //         // this.isAdmin = true;
+  //       })
+  //     }
+  //   })
+  // }
   
 
  

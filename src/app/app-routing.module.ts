@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { ChoferComponent } from './components/chofer/chofer.component';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,7 +20,10 @@ const routes: Routes = [
   { path: 'recuperar-password', component: RecuperarPasswordComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent },
+  { path: 'chofer', component: ChoferComponent },
+
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
 ];
 
 @NgModule({

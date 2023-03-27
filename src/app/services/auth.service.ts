@@ -6,7 +6,8 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { map, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -14,6 +15,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  
   
 
   constructor(
@@ -43,7 +45,6 @@ export class AuthService {
   SignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user);
         
         this.afAuth.authState.subscribe((user) => {
           if (user) {
@@ -158,7 +159,28 @@ export class AuthService {
     });
 
   }
+  isAuth() {
+    return this.afAuth.authState.pipe(map(auth => auth));
+  }
+
+  consultar(userId: any): Observable<any>{
+    // this.firebase.object(this.collection).set({...user});
+
+    return this.firebase.list(`register/${userId}`).valueChanges();
+
+  }
   
+  getUserData(userId: string): Observable<any> {
+    return this.firebase.object(`register/${userId}`).valueChanges();
+  }
+
+
+  isUserAdmin(userUid: any) {
+    return this.afs.doc<any>(`users/${userUid}`).valueChanges();
+  }
+
+  
+
 
 
 
