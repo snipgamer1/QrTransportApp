@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { map, Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -15,6 +16,10 @@ import { map, Observable } from 'rxjs';
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  usersaldo: any;
+  useruid: any;
+  chofersaldo: any;
+  choferuid: any;
   
   
 
@@ -129,7 +134,7 @@ export class AuthService {
       uid: user.uid,
       correo: user.email,
       role: 'usuario',
-      saldo: 0
+      saldo: 8
       // displayName: user.displayName,
       // photoURL: user.photoURL,
       // emailVerified: user.emailVerified,
@@ -147,15 +152,13 @@ export class AuthService {
     });
   }
 
-  insertRegister(user: any){
+  insertRegister(userId: any){
 
     // this.firebase.object(this.collection).set({...user});
 
     this.firebase.list('register').push({
-      uid: user.uid,
-      email: user.email,
-      role: 'usuario',
-      saldo: 0,
+      uid: userId.uid,
+
     });
 
   }
@@ -170,14 +173,109 @@ export class AuthService {
 
   }
   
-  getUserData(userId: string): Observable<any> {
-    return this.firebase.object(`register/${userId}`).valueChanges();
+  
+  getUserData(userId: any ) {
+    this.isUserAdmin(userId).subscribe(userData => {
+      this.usersaldo  = userData.saldo -8;
+      return this.usersaldo;
+      
+
+    });
+    
+    if(this.usersaldo < 0){
+      //saldo insuficiente
+      this.error()
+
+    }else{
+      this.setsaldo(userId).catch((error) => {
+        this.error()
+      });
+      this.sucess();
+      this.setsaldochofer();
+      // this.insertRegister(userId);
+
+    }
+    
+    
   }
+  setsaldochofer(){
+    this.afAuth.currentUser.then(user => {
+      if(user) {
+        this.isUserAdmin(this.userData.uid).subscribe(userData => {
+          this.chofersaldo = userData.saldo + 8;
+          this.choferuid = userData.uid;
+
+        return this.chofersaldo, this.choferuid;
+        });
+        
+      } 
+    })
+
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      'users/' + this.choferuid
+    );
+    const userData= {
+      saldo: this.chofersaldo
+
+    };
+    return userRef.update(userData
+    );
+  }
+
+  setsaldo(userId: any){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${userId}`
+    );
+    const userData= {
+      saldo: this.usersaldo
+
+    };
+    return userRef.update(userData
+    );
+  }
+
+
+  sucess(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Acceso Correcto',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  error(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Saldo Insuficiente',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  
 
 
   isUserAdmin(userUid: any) {
     return this.afs.doc<any>(`users/${userUid}`).valueChanges();
   }
+
+  // inserttickets(userId: any){
+  //   this.isUserAdmin(userId).subscribe(userData => {
+  //     this.useruid  = userData.uid;
+  //     console.log(this.useruid);
+
+  //     return this.useruid;
+
+  //   });
+    
+  //   // this.firebase.object(this.collection).set({...user});
+
+  //   this.firebase.list('tickets').push({
+  //     uid: this.useruid,
+  //   });
+
+  // }
 
   
 

@@ -21,7 +21,6 @@ import { AuthService } from "../../services/auth.service";
 })
 export class DashboardComponent implements OnInit {
   dataUser: any;
-
   userData: any;
   userId: any;
   // elementType= NgxQrcodeElementTypes.CANVAS
@@ -29,6 +28,8 @@ export class DashboardComponent implements OnInit {
   // pagos: FormGroup;
   userRole: any; 
   isAdmin: any;
+  usersaldo: any;
+  useruid: any;
 
 
 
@@ -109,13 +110,21 @@ export class DashboardComponent implements OnInit {
     this.afAuth.currentUser.then(user => {
       if(user) {
         this.authService.isUserAdmin(this.auth.userData.uid).subscribe(userData => {
-          const userRole = userData.saldo;
-          console.log(`User role: ${userRole}`);
-          // if(this.userRole === 'mILP0hv2pMZkhQtJg2xfxVIOCiE2'){
-          //   this.router.navigate(['/profile']);
-          // }
-        });
+          this.userRole = userData.role;
+          this.usersaldo = userData.saldo;
+          this.useruid = userData.uid;
+
+          
+          
+          console.log('User role:', this.userRole);
+           if(this.userRole === 'chofer'){
+             this.router.navigate(['/chofer']);
+           }
+        return this.userRole;
+        return this.usersaldo;
         
+
+        });
         
       } 
     })

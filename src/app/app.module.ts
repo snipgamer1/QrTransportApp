@@ -28,6 +28,8 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { RegistrarChoferComponent } from './components/dashboard/registrar-chofer/registrar-chofer.component';
 import { ChoferComponent } from './components/chofer/chofer.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { CombisComponent } from './components/combis/combis.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { ChoferComponent } from './components/chofer/chofer.component';
     SpinnerComponent,
     TopNavComponent,
     ProfileComponent,
-    ChoferComponent
+    ChoferComponent,
+    InicioComponent,
+    CombisComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,157 @@
+<header>
+    <a routerLink="/inicio"><div class="logo">QrTransport</div></a>
+    <div class="hamburger">
+        <div class="line"></div>           
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li>
+                <a routerLink="/inicio" class="active">Home</a>
+            </li>
+            <li>
+                <a routerLink="/dashboard" >Mi cuenta</a>
+            </li>
+            <li>
+                <a routerLink="/inicio">Ayuda</a>
+            </li>
+            <li>
+                <a routerLink="/inicio">Conocenos</a>
+            </li>
+        </ul>
+       
+    </nav>
+</header>
+<!---->
+
+<div>
+    <div class="slider">
+<ul>
+    <li><img src="../../../assets/img/slider1.jpg" alt=""></li>
+    <li><img src="../../../assets/img/slider2.jpg" alt=""></li>
+    <li><img src="../../../assets/img/slider3.jpg" alt=""></li>
+</ul>
+    </div>
+</div>
+
+
+
+<script>
+    hamburger= document.querySelector(".hamburger");
+    hamburger.onclick  = function(){
+        navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+    }
+</script>
+
+
+
+<div class="container-card">
+
+    <div class="card1">  
+        <img src="../../../assets/img/promo1.png" alt="">
+        <h3>Pase de oportunidad para estudiantes</h3>
+    </div>
+
+    <div class="card1">  
+        <img src="../../../assets/img/promo2.png" alt="">
+    <h3>Personaliza tu cuenta en QrTransport</h3>
+    </div>
+
+    <div class="card1">  
+        <img src="../../../assets/img/promo3.png" alt="">
+        <h3>Recarga tu tarjeta en cualquier establecimiento</h3>
+    </div>
+
+</div>
+<div class="container-card">
+
+<div class="card1">  
+    <img src="../../../assets/img/promo4.png" alt="">
+    <h3>Obtenga informacion de los lugares por donde pasa tu ruta </h3>
+</div>
+
+<div class="card1">  
+    <img src="../../../assets/img/promo5.png" alt="">
+    <h3>Opcion de uso de Qr </h3>
+</div>
+
+<div class="card1">  
+    <img src="../../../assets/img/promo6.png" alt="">
+    <h3>Inicia sesion y configura tu cuenta</h3>
+</div>
+
+
+
+</div>
+
+
+
+
+<h1>TRANSPORTES DISPONIBLES</h1>
+
+<div class="title-cards"></div>
+    <div class="container-card">
+
+ <div class="card">  
+<figure>    
+<img src="https://www.deceroacien.com.mx/u/fotografias/m/2022/7/27/f960x540-6439_80514_0.jpg">
+</figure>
+    <div class="contenido-card">
+    <h3>COMBIS</h3>
+<a routerLink="/combis">Mas informacion</a>
+    </div>
+</div>
+<div class="card">
+    <figure>
+    <img src="https://i0.wp.com/camionesvence.com/wp-content/uploads/2020/12/camionesvence-TRANSPORTE-DE-PERSONAL-AUTOBUS-BOXER.jpg?fit=445%2C280&ssl=1">
+    </figure>
+        <div class="contenido-card">
+        <h3>AUTOBUSES</h3>
+    <a routerLink="/inicio">Mas informacion</a>
+        </div>
+</div>
+<div class="card">
+<figure>
+<img src="https://cdn.forbes.com.mx/2022/02/WhatsApp-Image-2022-02-03-at-1.19.35-PM-640x360.jpeg">
+</figure>
+<div class="contenido-card">
+<h3>TAXI</h3>
+<a routerLink="/dashboard">Mas informacion</a>
+</div>
+</div>
+</div>
+
+
+<footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a routerLink="/dashboard">
+                    <img src="../../../assets/img/Logo-QrTransport.png" alt="Logo de QrTransport">
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>SOBRE NOSOTROS</h2>
+            <p style="text-align: justify;">Somos una empresa innovadora y comprometida en la creación de software de la más alta calidad, brindando las mejores soluciones tecnológicas
+            </p>
+            <p>Una empresa creadora de sistemas eficientes y de mejora continua, siendo reconocida a nivel regional y nacional por entregar productos excelentes</p>
+        </div>
+        <div class="box">
+            <h2>SIGUENOS</h2>
+            <div class="red-social">
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+                <a href="https://youtube.com/" class="fa fa-youtube"></a>
+            </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2023 <b>QrTransport</b> - Pagina creada para fines educativos</small>
+    </div>
+</footer>
+
+

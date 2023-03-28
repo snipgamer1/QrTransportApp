@@ -1,14 +1,13 @@
 <app-top-nav ></app-top-nav>
-<div> hola {{userRole}}</div>
-<div class="container" *ngIf="authService.userData as user">
+<div class="container" >
   <div style="width: 50%;">
     <div class="py-2">
       <div>
-          <h4 class="pb-4 border-bottom">Balance de cuenta: $ <span>{{user.saldo}}</span></h4>
+          <h4 class="pb-4 border-bottom">Balance de cuenta: $ <span>{{ this.usersaldo }}</span></h4>
       </div>
-      <div class="row py-2">
+      <div class="row py-2"*ngIf="authService.userData as user">
           <div class="">
-              <label for="firstname"ng-if>Agregar dinero a  {{user.uid}}</label>
+              <label for="firstname" ng-if>Agregar dinero a  {{user.uid}}</label>
           </div>
       </div>
       <div class="btn-container" >
@@ -21,9 +20,12 @@
                     <option value="">Otro</option>
                   </select>
             </form>
+            <a ></a>
 
             <div class="py-3 pb-4 border-bottom">
-                <button class="btn btn-primary mr-3" >pagar</button>
+                <a href="">
+                    <button class="btn btn-primary mr-3" >pagar</button>
+                </a>
                 
             </div>
       </div>
@@ -42,14 +44,30 @@
       </div>
   </div>
   </div>
-  <div class="qr" >
+  <div class="qr"  *ngIf="authService.userData as user">
     <div class="img">
         <ngx-qrcode-styling #qrcode 
         [data]="user.uid" [width]="200" [height]="200" [margin]="3"
             [backgroundOptions]="{ color: '#fff0' }" >
         </ngx-qrcode-styling>
         <div>
-            <button (click)="onDownload(qrcode)">Download</button>
+            <a (click)="onDownload(qrcode)" class="link">
+                <svg viewBox='0 0 200 200'  width='100' height='100' xmlns='http://www.w3.org/2000/svg' class="link__svg" aria-labelledby="link1-title link1-desc">
+                    <title id="link1-title">Descargar</title>
+                    <desc id="link1-desc">A rotating link with text placed around a circle with an arrow inside</desc>
+            
+                    <path id="link-circle" class="link__path" d="M 20, 100 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" stroke="none" fill="none" />
+            
+                    <path class="link__arrow" d="M 75 100 L 125 100 L 110 85 M 125 100 L 110 115"  fill="none" />
+            
+                    <text class="link__text">
+                        <textPath href="#link-circle" stroke="none">
+                            .... Descarga .... tu propio QR 
+                        </textPath>
+                    </text>
+                </svg>
+            </a>
+            
         </div>
 
     </div>    

@@ -25,36 +25,34 @@
     </nav>
 </header>
 
-<div class="container" *ngIf="authService.userData as user">
+<div class="container" >
   <div style="width: 50%;">
     <div class="py-2">
-      <div>
-          <h4 class="pb-4 border-bottom">Balance de cuenta: $ <span>{{user.saldo}}</span></h4>
-      </div>
-      <div class="row py-2">
-          <div class="">
-              <label for="firstname"ng-if>Agregar dinero a  {{user.uid}}</label>
-          </div>
-      </div>
-      <div class="btn-container" >
-            <form >
-                <select class="form-select form-select-lg">
-                    <option selected value="8">8</option>
-                    <option value="16">16</option>
-                    <option value="24">24</option>
-                    <option value="40">40</option>
-                    <option value="">Otro</option>
-                  </select>
-            </form>
-
-            <div class="py-3 pb-4 border-bottom">
-                <button class="btn btn-primary mr-3" >pagar</button>
+        <div class="card">
+            <div class="content">
+              <div class="top">
+                <p>Chofer</p>
+                <div class="color"></div>
+              </div>
+              <div class="middle">
+                <div>
+                  <p>Cuenta: {{ this.useruid }}</p>
+                  <p>Ruta ##</p>
+                </div>
+                <img src="https://i.pinimg.com/originals/af/72/57/af7257ee7ba4172c8d7f0b2f86e416e1.png" />
+              </div>
+              <div class="bottom">
+                <div>
+          <h4 class="pb-4 border-bottom">Balance de cuenta: $ <span> {{this.usersaldo}} </span></h4>
+                  
+                </div>
                 
+              </div>
             </div>
+          </div>
+        
+      <div>
       </div>
-      
-
-
       
       <div class="d-sm-flex align-items-center pt-3" id="deactivate">
           <div>
@@ -71,8 +69,26 @@
     <div class="img">
         
         <div>
+            <div class="container">
+                <form (ngSubmit)="envio()" [formGroup]="qr">
+                    <div class="form-floating mb-3">
+                        <label>Qr</label>
+                        <input type="text" formControlName="text" class="form-control">
+                        
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="opacity"  >Ingresar</button>
+                    </div>
+                </form>
+              
+                
+              
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-primary">
+                
                     <thead>
                         <tr>
                             <th scope="col">Column 1</th>
